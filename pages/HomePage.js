@@ -1,10 +1,3 @@
-/**
- * Homepage Page Object Model
- * 
- * Represents the main landing page of Galeria Mexicana
- * Contains all selectors and actions for the homepage
- */
-
 import { expect } from '@playwright/test';
 import { BasePage } from '../utils/test-helpers.js';
 
@@ -12,56 +5,37 @@ export class HomePage extends BasePage {
   constructor(page) {
     super(page);
     
-    // Header selectors
     this.header = '#unified-header';
     this.logo = 'img[alt*="Galería Mexicana"]';
     this.cartButton = '[data-testid="cart-button"], .cart-icon, [class*="cart"]';
     this.cartCounter = '.cart-counter, [data-testid="cart-counter"]';
-    
-    // Navigation selectors
     this.navMenu = '.nav-menu, [data-testid="nav-menu"]';
     this.tequilaLink = 'a[href="/tequila"], a[href*="tequila"]';
     this.blogLink = 'a[href="/blog"], a[href*="blog"]';
     this.adminLink = 'a[href="/admin"], a[href*="admin"]';
-    
-    // Banner selectors
     this.banner = '.banner, [data-testid="banner"]';
     this.bannerTitle = '.banner h1, .banner-title';
     this.bannerSubtitle = '.banner-subtitle, .banner p';
-    
-    // Product grid selectors
     this.productGrid = '.product-grid, [data-testid="product-grid"]';
     this.productCards = '.product-card, [data-testid="product-card"]';
     this.productName = '.product-name, .product-title';
     this.productPrice = '.product-price, .price';
     this.productImage = '.product-image img';
     this.addToCartButtons = '.add-to-cart, [data-testid="add-to-cart"]';
-    
-    // Filter selectors
     this.filterContainer = '.product-filter, [data-testid="filter"]';
     this.categoryFilter = '.category-filter, select[name="category"]';
     this.searchInput = '.search-input, input[type="search"], input[placeholder*="buscar"]';
     this.searchButton = '.search-button, [data-testid="search-btn"]';
     this.sortSelect = '.sort-select, select[name="sort"]';
-    
-    // Brands section selectors
     this.brandsSection = '.brands-section, [data-testid="brands"]';
     this.brandLogos = '.brand-logo, .brands-section img';
-    
-    // Blog section selectors
     this.blogSection = '.blog-section, [data-testid="blog-section"]';
     this.blogPosts = '.blog-post, .blog-card';
     this.blogTitles = '.blog-title, .blog-post h3';
-    
-    // Footer selectors
     this.footer = 'footer, .footer';
     this.footerLinks = 'footer a, .footer a';
     this.socialLinks = '.social-links a, [data-testid="social-link"]';
-    
-    // WhatsApp floating button
     this.whatsappButton = '.whatsapp-float, [data-testid="whatsapp"], .floating-whatsapp';
-    
-    // Cart modal selectors
     this.cartModal = '.cart-modal, [data-testid="cart-modal"]';
     this.cartItems = '.cart-item, [data-testid="cart-item"]';
     this.cartTotal = '.cart-total, [data-testid="cart-total"]';
@@ -72,7 +46,6 @@ export class HomePage extends BasePage {
     this.clearCartButton = '.clear-cart, [data-testid="clear-cart"]';
   }
 
-  // Navigation actions
   async navigateToHome() {
     await this.navigate('/');
     await this.waitForPageLoad();
@@ -92,7 +65,6 @@ export class HomePage extends BasePage {
     await this.helpers.waitForPageLoad();
   }
 
-  // Product interactions
   async getProductCount() {
     const products = this.page.locator(this.productCards);
     return await products.count();
@@ -110,7 +82,7 @@ export class HomePage extends BasePage {
     const firstProduct = await this.getFirstProduct();
     const addButton = firstProduct.locator(this.addToCartButtons);
     await addButton.click();
-    await this.page.waitForTimeout(500); // Wait for cart animation
+    await this.page.waitForTimeout(500);
   }
 
   async addProductToCartByName(productName) {
@@ -130,11 +102,9 @@ export class HomePage extends BasePage {
     return await nameElement.textContent();
   }
 
-  // Search and filter actions
   async searchProducts(searchTerm) {
     await this.helpers.safeFill(this.searchInput, searchTerm);
     
-    // Try to click search button if it exists, otherwise press Enter
     if (await this.helpers.elementExists(this.searchButton)) {
       await this.helpers.safeClick(this.searchButton);
     } else {
@@ -160,7 +130,6 @@ export class HomePage extends BasePage {
     }
   }
 
-  // Cart actions
   async openCart() {
     await this.helpers.safeClick(this.cartButton);
     await this.helpers.waitForElement(this.cartModal);
@@ -204,17 +173,14 @@ export class HomePage extends BasePage {
   async proceedToCheckout() {
     await this.openCart();
     await this.helpers.safeClick(this.checkoutButton);
-    // This should open WhatsApp
     await this.page.waitForTimeout(1000);
   }
 
-  // WhatsApp interactions
   async clickWhatsAppButton() {
     await this.helpers.safeClick(this.whatsappButton);
     await this.page.waitForTimeout(1000);
   }
 
-  // Validation methods
   async verifyHomepageLoaded() {
     await expect(this.page.locator(this.header)).toBeVisible();
     await expect(this.page.locator(this.banner)).toBeVisible();
@@ -226,7 +192,6 @@ export class HomePage extends BasePage {
     const productCount = await this.getProductCount();
     expect(productCount).toBeGreaterThan(0);
     
-    // Verify first product has required elements
     const firstProduct = await this.getFirstProduct();
     await expect(firstProduct.locator(this.productName)).toBeVisible();
     await expect(firstProduct.locator(this.productPrice)).toBeVisible();
@@ -257,20 +222,16 @@ export class HomePage extends BasePage {
   }
 
   async verifyResponsiveElements() {
-    // Check that key elements are visible on current viewport
     await expect(this.page.locator(this.header)).toBeVisible();
     await expect(this.page.locator(this.productGrid)).toBeVisible();
     
-    // On mobile, some elements might be in a hamburger menu
     const viewport = this.page.viewportSize();
     if (viewport.width < 768) {
-      // Mobile specific checks
       console.log('Mobile viewport detected, checking mobile-specific elements');
     }
   }
 
   async verifyCartFunctionality() {
-    // Add a product and verify cart updates
     const initialCount = await this.getCartItemCount();
     await this.addFirstProductToCart();
     
@@ -282,18 +243,15 @@ export class HomePage extends BasePage {
     await expect(this.page.locator(this.whatsappButton)).toBeVisible();
   }
 
-  // SEO and performance checks
   async verifySEO() {
     await this.checkSEO();
     
-    // Check specific meta tags for homepage
     await expect(this.page.locator('meta[property="og:title"]')).toHaveAttribute('content');
     await expect(this.page.locator('meta[property="og:description"]')).toHaveAttribute('content');
     await expect(this.page.locator('meta[property="og:image"]')).toHaveAttribute('content');
   }
 
   async verifyAccessibility() {
-    // Check images have alt text
     const images = this.page.locator('img');
     const imageCount = await images.count();
     
@@ -302,11 +260,9 @@ export class HomePage extends BasePage {
       await expect(img).toHaveAttribute('alt');
     }
     
-    // Check heading structure
     await expect(this.page.locator('h1')).toBeVisible();
   }
 
-  // Utility methods
   async waitForPageLoad() {
     await this.helpers.waitForPageLoad();
     await this.page.waitForLoadState('networkidle');
