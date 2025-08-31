@@ -1,0 +1,34 @@
+{
+  "name": "galeria-mexicana-e2e-tests",
+  "version": "1.0.0",
+  "description": "Advanced Playwright E2E test suite for Galeria Mexicana Next.js application",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=mobile-chrome --project=mobile-safari",
+    "test:ci": "playwright test --reporter=html",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen http://localhost:3000"
+  },
+  "keywords": [
+    "playwright", 
+    "e2e", 
+    "testing", 
+    "nextjs", 
+    "ecommerce", 
+    "mexican-products"
+  ],
+  "author": "Santiago Madriz",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0",
+    "@playwright/test": "^1.55.0"
+  }
+}

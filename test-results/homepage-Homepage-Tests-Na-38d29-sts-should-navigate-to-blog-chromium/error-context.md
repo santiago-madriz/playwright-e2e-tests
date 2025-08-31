@@ -1,0 +1,589 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - link [ref=e8] [cursor=pointer]:
+            - /url: https://www.facebook.com/galeriamexicanacr
+            - img [ref=e9] [cursor=pointer]
+          - link [ref=e11] [cursor=pointer]:
+            - /url: https://www.instagram.com/galeriamexicanacr/
+            - img [ref=e12] [cursor=pointer]
+          - link [ref=e14] [cursor=pointer]:
+            - /url: https://api.whatsapp.com/send/?phone=50687396001&text&type=phone_number&app_absent=0
+            - img [ref=e15] [cursor=pointer]
+        - link "📞 (+506) 8739-6001" [ref=e18] [cursor=pointer]:
+          - /url: tel:+50687396001
+      - generic [ref=e20]:
+        - link "Galería Mexicana Logo Galería Mexicana “De México a tus manos”" [ref=e21] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e22] [cursor=pointer]:
+            - img "Galería Mexicana Logo" [ref=e23] [cursor=pointer]
+            - generic [ref=e24] [cursor=pointer]:
+              - heading "Galería Mexicana" [level=1] [ref=e25] [cursor=pointer]
+              - paragraph [ref=e26] [cursor=pointer]: “De México a tus manos”
+        - navigation [ref=e27]:
+          - button "🛍️ Productos" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29] [cursor=pointer]: 🛍️
+            - text: Productos
+          - button "🏷️ Marcas" [ref=e30] [cursor=pointer]:
+            - generic [ref=e31] [cursor=pointer]: 🏷️
+            - text: Marcas
+          - button "📦 Servicios" [ref=e32] [cursor=pointer]:
+            - generic [ref=e33] [cursor=pointer]: 📦
+            - text: Servicios
+          - button "ℹ️ Nosotros" [ref=e34] [cursor=pointer]:
+            - generic [ref=e35] [cursor=pointer]: ℹ️
+            - text: Nosotros
+          - button "📍 Ubicación" [ref=e36] [cursor=pointer]:
+            - generic [ref=e37] [cursor=pointer]: 📍
+            - text: Ubicación
+          - button "📝 Blog" [ref=e38] [cursor=pointer]:
+            - generic [ref=e39] [cursor=pointer]: 📝
+            - text: Blog
+        - button "Carrito de compras" [ref=e41] [cursor=pointer]:
+          - img [ref=e42] [cursor=pointer]
+    - generic [ref=e47]:
+      - button "Slide anterior" [ref=e48] [cursor=pointer]:
+        - img [ref=e49] [cursor=pointer]
+      - button "Siguiente slide" [ref=e51] [cursor=pointer]:
+        - img [ref=e52] [cursor=pointer]
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - heading "Tradición Mexicana" [level=1] [ref=e56]
+          - paragraph [ref=e57]: Productos selectos directo desde México
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - img [ref=e60]
+              - generic [ref=e62]: Marcas reconocidas
+            - generic [ref=e63]:
+              - img [ref=e64]
+              - generic [ref=e66]: Importación directa
+            - generic [ref=e67]:
+              - img [ref=e68]
+              - generic [ref=e70]: Precios competitivos
+          - generic [ref=e71]:
+            - button "Ver Catálogo" [ref=e72] [cursor=pointer]:
+              - img [ref=e73] [cursor=pointer]
+              - text: Ver Catálogo
+            - button "Servicios" [ref=e75] [cursor=pointer]:
+              - img [ref=e76] [cursor=pointer]
+              - text: Servicios
+        - img "Tradición Mexicana" [ref=e80]
+      - generic [ref=e82]:
+        - button "Ir al slide 1" [ref=e83] [cursor=pointer]
+        - button "Ir al slide 2" [ref=e84] [cursor=pointer]
+        - button "Ir al slide 3" [ref=e85] [cursor=pointer]
+    - generic [ref=e87]:
+      - generic [ref=e88]:
+        - heading "Nuestros Productos Mexicanos" [level=2] [ref=e89]
+        - paragraph [ref=e90]: Descubre auténticos sabores de México, desde tequilas premium hasta dulces tradicionales
+      - generic [ref=e92]:
+        - generic [ref=e94]:
+          - img [ref=e95]
+          - textbox "Buscar productos mexicanos..." [ref=e97]
+        - generic [ref=e98]:
+          - button "Filtros" [ref=e99] [cursor=pointer]:
+            - img [ref=e100] [cursor=pointer]
+            - text: Filtros
+          - generic [ref=e102]:
+            - button [ref=e103] [cursor=pointer]:
+              - img [ref=e104] [cursor=pointer]
+            - button [ref=e106] [cursor=pointer]:
+              - img [ref=e107] [cursor=pointer]
+      - paragraph [ref=e110]: Mostrando 11 productos
+      - generic [ref=e111]:
+        - generic [ref=e113]:
+          - generic [ref=e114]:
+            - img "Molcajete" [ref=e115]
+            - text: "0"
+            - generic [ref=e116]:
+              - button "Vista rápida" [ref=e117] [cursor=pointer]:
+                - img [ref=e118] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e120] [cursor=pointer]:
+                - img [ref=e121] [cursor=pointer]
+          - generic [ref=e123]:
+            - heading "Molcajete" [level=3] [ref=e124]
+            - paragraph [ref=e125]: Productos Gourmet
+            - generic [ref=e127]: ₡25,000
+            - button "Agregar al carrito" [ref=e128] [cursor=pointer]:
+              - img [ref=e129] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - img "Gran Malo Jamaica" [ref=e134]
+            - text: "0"
+            - generic [ref=e135]:
+              - button "Vista rápida" [ref=e136] [cursor=pointer]:
+                - img [ref=e137] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e139] [cursor=pointer]:
+                - img [ref=e140] [cursor=pointer]
+          - generic [ref=e142]:
+            - heading "Gran Malo Jamaica" [level=3] [ref=e143]
+            - paragraph [ref=e144]: Bebidas Alcohólicas
+            - generic [ref=e146]: ₡28,000
+            - button "Agregar al carrito" [ref=e147] [cursor=pointer]:
+              - img [ref=e148] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e151]:
+          - generic [ref=e152]:
+            - img "Sombrero típico mexicano paja tamaño Gigante" [ref=e153]
+            - text: "0"
+            - generic [ref=e154]:
+              - button "Vista rápida" [ref=e155] [cursor=pointer]:
+                - img [ref=e156] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e158] [cursor=pointer]:
+                - img [ref=e159] [cursor=pointer]
+          - generic [ref=e161]:
+            - heading "Sombrero típico mexicano paja tamaño Gigante" [level=3] [ref=e162]
+            - paragraph [ref=e163]: Bebidas Alcohólicas
+            - generic [ref=e165]: ₡23,000
+            - button "Agregar al carrito" [ref=e166] [cursor=pointer]:
+              - img [ref=e167] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - img "Sombrero Charro Multicolor" [ref=e172]
+            - text: "0"
+            - generic [ref=e173]:
+              - button "Vista rápida" [ref=e174] [cursor=pointer]:
+                - img [ref=e175] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e177] [cursor=pointer]:
+                - img [ref=e178] [cursor=pointer]
+          - generic [ref=e180]:
+            - heading "Sombrero Charro Multicolor" [level=3] [ref=e181]
+            - paragraph [ref=e182]: Bebidas Alcohólicas
+            - generic [ref=e184]: ₡45,000
+            - button "Agregar al carrito" [ref=e185] [cursor=pointer]:
+              - img [ref=e186] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e189]:
+          - generic [ref=e190]:
+            - img "Cobija típica tipo Zarape" [ref=e191]
+            - text: "0"
+            - generic [ref=e192]:
+              - button "Vista rápida" [ref=e193] [cursor=pointer]:
+                - img [ref=e194] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e196] [cursor=pointer]:
+                - img [ref=e197] [cursor=pointer]
+          - generic [ref=e199]:
+            - heading "Cobija típica tipo Zarape" [level=3] [ref=e200]
+            - paragraph [ref=e201]: Productos Gourmet
+            - generic [ref=e203]: ₡45,000
+            - button "Agregar al carrito" [ref=e204] [cursor=pointer]:
+              - img [ref=e205] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e208]:
+          - generic [ref=e209]:
+            - img "Bolsa VERO MIX" [ref=e210]
+            - text: "0"
+            - generic [ref=e211]:
+              - button "Vista rápida" [ref=e212] [cursor=pointer]:
+                - img [ref=e213] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e215] [cursor=pointer]:
+                - img [ref=e216] [cursor=pointer]
+          - generic [ref=e218]:
+            - heading "Bolsa VERO MIX" [level=3] [ref=e219]
+            - paragraph [ref=e220]: Dulces y Confitería
+            - generic [ref=e222]: ₡8,000
+            - button "Agregar al carrito" [ref=e223] [cursor=pointer]:
+              - img [ref=e224] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e227]:
+          - generic [ref=e228]:
+            - img "Papel Picado" [ref=e229]
+            - text: "0"
+            - generic [ref=e230]:
+              - button "Vista rápida" [ref=e231] [cursor=pointer]:
+                - img [ref=e232] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e234] [cursor=pointer]:
+                - img [ref=e235] [cursor=pointer]
+          - generic [ref=e237]:
+            - heading "Papel Picado" [level=3] [ref=e238]
+            - paragraph [ref=e239]: Productos Gourmet
+            - generic [ref=e241]: ₡6,500
+            - button "Agregar al carrito" [ref=e242] [cursor=pointer]:
+              - img [ref=e243] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e246]:
+          - generic [ref=e247]:
+            - img "Mantel multicolor típico de Puebla" [ref=e248]
+            - text: "0"
+            - generic [ref=e249]:
+              - button "Vista rápida" [ref=e250] [cursor=pointer]:
+                - img [ref=e251] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e253] [cursor=pointer]:
+                - img [ref=e254] [cursor=pointer]
+          - generic [ref=e256]:
+            - heading "Mantel multicolor típico de Puebla" [level=3] [ref=e257]
+            - paragraph [ref=e258]: Dulces y Confitería
+            - generic [ref=e260]: ₡35,000
+            - button "Agregar al carrito" [ref=e261] [cursor=pointer]:
+              - img [ref=e262] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e265]:
+          - generic [ref=e266]:
+            - img "Dulces de la Rosa - Mazapán" [ref=e267]
+            - text: "0"
+            - generic [ref=e268]:
+              - button "Vista rápida" [ref=e269] [cursor=pointer]:
+                - img [ref=e270] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e272] [cursor=pointer]:
+                - img [ref=e273] [cursor=pointer]
+          - generic [ref=e275]:
+            - heading "Dulces de la Rosa - Mazapán" [level=3] [ref=e276]
+            - paragraph [ref=e277]: Dulces y Confitería
+            - generic [ref=e279]: ₡12,000
+            - button "Agregar al carrito" [ref=e280] [cursor=pointer]:
+              - img [ref=e281] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e284]:
+          - generic [ref=e285]:
+            - img "Tequila Don Julio 1942" [ref=e286]
+            - generic [ref=e287]: "-13%"
+            - generic [ref=e288]:
+              - button "Vista rápida" [ref=e289] [cursor=pointer]:
+                - img [ref=e290] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e292] [cursor=pointer]:
+                - img [ref=e293] [cursor=pointer]
+          - generic [ref=e295]:
+            - heading "Tequila Don Julio 1942" [level=3] [ref=e296]
+            - paragraph [ref=e297]: Bebidas Alcohólicas
+            - generic [ref=e299]: ₡45,000
+            - button "Agregar al carrito" [ref=e300] [cursor=pointer]:
+              - img [ref=e301] [cursor=pointer]
+              - text: Agregar al carrito
+        - generic [ref=e304]:
+          - generic [ref=e305]:
+            - img "Tequila Gran Malo Horchata" [ref=e306]
+            - generic [ref=e307]: "-12%"
+            - generic [ref=e308]:
+              - button "Vista rápida" [ref=e309] [cursor=pointer]:
+                - img [ref=e310] [cursor=pointer]
+              - button "Agregar a favoritos" [ref=e312] [cursor=pointer]:
+                - img [ref=e313] [cursor=pointer]
+          - generic [ref=e315]:
+            - heading "Tequila Gran Malo Horchata" [level=3] [ref=e316]
+            - paragraph [ref=e317]: Bebidas Alcohólicas
+            - generic [ref=e319]: ₡28,000
+            - button "Agregar al carrito" [ref=e320] [cursor=pointer]:
+              - img [ref=e321] [cursor=pointer]
+              - text: Agregar al carrito
+    - generic [ref=e324]:
+      - generic [ref=e325]:
+        - heading "Nuestras Marcas" [level=2] [ref=e326]
+        - paragraph [ref=e327]: Trabajamos con las mejores marcas mexicanas para traerte productos auténticos
+      - generic [ref=e329]:
+        - img "Dulces de la Rosa" [ref=e332]
+        - img "Tecate" [ref=e335]
+        - img "Gran Malo" [ref=e338]
+        - img "Don Julio" [ref=e341]
+        - img "Modelo" [ref=e344]
+        - img "Costena" [ref=e347]
+        - img "Pulparindo" [ref=e350]
+        - img "Takis" [ref=e353]
+        - img "Dulces de la Rosa" [ref=e356]
+        - img "Tecate" [ref=e359]
+        - img "Gran Malo" [ref=e362]
+        - img "Don Julio" [ref=e365]
+        - img "Modelo" [ref=e368]
+        - img "Costena" [ref=e371]
+        - img "Pulparindo" [ref=e374]
+        - img "Takis" [ref=e377]
+    - generic [ref=e378]:
+      - generic [ref=e380]:
+        - generic [ref=e381]:
+          - heading "Nuestros Servicios" [level=2] [ref=e382]
+          - paragraph [ref=e383]: Ofrecemos una amplia gama de servicios para conectarte con México
+        - generic [ref=e384]:
+          - generic [ref=e385]:
+            - img [ref=e387]
+            - generic [ref=e389]:
+              - heading "ALQUILER DE ARTÍCULOS PARA EVENTOS" [level=3] [ref=e390]
+              - paragraph [ref=e391]: Piñatas, decoraciones mexicanas y artículos temáticos para tus fiestas
+          - generic [ref=e392]:
+            - img [ref=e394]
+            - generic [ref=e396]:
+              - heading "TRÁMITES DE PAGO EN MÉXICO" [level=3] [ref=e397]
+              - paragraph [ref=e398]: Facilitamos tus pagos y transferencias hacia México de forma segura
+          - generic [ref=e399]:
+            - img [ref=e401]
+            - generic [ref=e403]:
+              - heading "ENCOMIENDA DE DOCUMENTOS" [level=3] [ref=e404]
+              - paragraph [ref=e405]: Envío seguro de documentos importantes a México
+          - generic [ref=e406]:
+            - img [ref=e408]
+            - generic [ref=e410]:
+              - heading "PEDIDOS BAJO ENCARGO" [level=3] [ref=e411]
+              - paragraph [ref=e412]: Conseguimos productos específicos que necesites desde México
+      - generic [ref=e414]:
+        - generic [ref=e415]:
+          - heading "¿Por qué elegirnos?" [level=2] [ref=e416]
+          - paragraph [ref=e417]: Nos comprometemos a brindarte el mejor servicio y productos de calidad
+        - generic [ref=e418]:
+          - generic [ref=e419]:
+            - img [ref=e422]
+            - generic [ref=e424]:
+              - heading "ENVÍO MEDIANTE CORREOS DE COSTA RICA" [level=3] [ref=e425]
+              - paragraph [ref=e426]: O entregas personales en tienda
+          - generic [ref=e427]:
+            - img [ref=e430]
+            - link "ESTAMOS PARA AYUDARTE Contáctanos por llamada o nuestro WhatsApp" [ref=e432] [cursor=pointer]:
+              - /url: https://api.whatsapp.com/send/?phone=50687396001&text&type=phone_number&app_absent=0
+              - generic [ref=e433] [cursor=pointer]:
+                - heading "ESTAMOS PARA AYUDARTE" [level=3] [ref=e434] [cursor=pointer]
+                - paragraph [ref=e435] [cursor=pointer]:
+                  - text: Contáctanos por llamada o nuestro
+                  - generic [ref=e436] [cursor=pointer]:
+                    - img [ref=e437] [cursor=pointer]
+                    - text: WhatsApp
+          - generic [ref=e439]:
+            - img [ref=e442]
+            - generic [ref=e444]:
+              - heading "EMPACADO CON AMOR" [level=3] [ref=e445]
+              - paragraph [ref=e446]: Porque cada detalle cuenta
+          - generic [ref=e447]:
+            - img [ref=e450]
+            - generic [ref=e452]:
+              - heading "ENCARGA CON EL 50%" [level=3] [ref=e453]
+              - paragraph [ref=e454]: Puedes pagar vía SINPE
+      - generic [ref=e457]:
+        - generic [ref=e458]:
+          - generic [ref=e459]:
+            - heading "Conoce nuestros productos" [level=3] [ref=e460]
+            - paragraph [ref=e461]: Mira cómo seleccionamos los mejores productos mexicanos para ti
+          - iframe [ref=e463]:
+            - main [ref=f1e3]:
+              - generic [ref=f1e5]:
+                - generic [ref=f1e9]:
+                  - generic:
+                    - link [ref=f1e10] [cursor=pointer]:
+                      - /url: https://www.tiktok.com?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_logo&referer_video_id=7327708965993860357
+                    - img [ref=f1e13] [cursor=pointer]
+                    - generic [ref=f1e23]:
+                      - link [ref=f1e24] [cursor=pointer]:
+                        - /url: https://www.tiktok.com/@recorriendocostarica?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_head&referer_video_id=7327708965993860357
+                      - link:
+                        - /url: https://www.tiktok.com/@recorriendocostarica?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_head&referer_video_id=7327708965993860357
+                        - img [ref=f1e27] [cursor=pointer]
+                      - link "3247" [ref=f1e32] [cursor=pointer]:
+                        - /url: https://www.tiktok.com/@recorriendocostarica/video/7327708965993860357?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_like&referer_video_id=7327708965993860357
+                        - generic [ref=f1e33] [cursor=pointer]:
+                          - img [ref=f1e34] [cursor=pointer]
+                          - generic [ref=f1e38] [cursor=pointer]: "3247"
+                      - link "46" [ref=f1e39] [cursor=pointer]:
+                        - /url: https://www.tiktok.com/@recorriendocostarica/video/7327708965993860357?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_comment_button&referer_video_id=7327708965993860357
+                        - generic [ref=f1e40] [cursor=pointer]:
+                          - img [ref=f1e41] [cursor=pointer]
+                          - generic [ref=f1e45] [cursor=pointer]: "46"
+                      - link "871" [ref=f1e46] [cursor=pointer]:
+                        - /url: https://www.tiktok.com/@recorriendocostarica/video/7327708965993860357?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_share&referer_video_id=7327708965993860357
+                        - generic [ref=f1e47] [cursor=pointer]:
+                          - img [ref=f1e48] [cursor=pointer]
+                          - generic [ref=f1e53] [cursor=pointer]: "871"
+                - generic [ref=f1e54]:
+                  - link "Mira más vídeos emocionantes en TikTok Mira más vídeos emocionantes en TikTokMira más vídeos emocionantes en TikTok Ver ahora" [ref=f1e56] [cursor=pointer]:
+                    - /url: https://www.tiktok.com?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_discover_button
+                    - generic [ref=f1e58] [cursor=pointer]:
+                      - generic [ref=f1e59] [cursor=pointer]: Mira más vídeos emocionantes en TikTok
+                      - generic [ref=f1e60] [cursor=pointer]:
+                        - generic [ref=f1e61] [cursor=pointer]: Mira más vídeos emocionantes en TikTok
+                        - generic [ref=f1e62] [cursor=pointer]: Mira más vídeos emocionantes en TikTok
+                    - button "Ver ahora" [ref=f1e63] [cursor=pointer]
+                  - generic [ref=f1e64]:
+                    - link:
+                      - /url: https://www.tiktok.com/@recorriendocostarica/video/7327708965993860357?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_blank&referer_video_id=7327708965993860357
+                    - generic [ref=f1e65] [cursor=pointer]:
+                      - link:
+                        - /url: https://www.tiktok.com/@recorriendocostarica/video/7327708965993860357?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_blank&referer_video_id=7327708965993860357
+                      - link "@recorriendocostarica" [ref=f1e66] [cursor=pointer]:
+                        - /url: https://www.tiktok.com/@recorriendocostarica?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_name&referer_video_id=7327708965993860357
+                        - generic [ref=f1e68] [cursor=pointer]: "@recorriendocostarica"
+                      - generic [ref=f1e69] [cursor=pointer]:
+                        - link "Encontré el Gran Malo de Horchata en Costa Rica 🇨🇷🇲🇽 📍125 metros al sur del calvario de la Basílica de Los Ángeles, Cartago. Lado izquierdo techo rojo. Lunes a sábado de 2:00 pm a 7:00 pm" [ref=f1e70] [cursor=pointer]:
+                          - /url: https://www.tiktok.com/@recorriendocostarica/video/7327708965993860357?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_blank&referer_video_id=7327708965993860357
+                        - link "#costarica" [ref=f1e71] [cursor=pointer]:
+                          - /url: https://www.tiktok.com/tag/costarica?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_hashtag&referer_video_id=7327708965993860357
+                          - generic [ref=f1e72] [cursor=pointer]: "#costarica"
+                        - link [ref=f1e73] [cursor=pointer]:
+                          - /url: https://www.tiktok.com/@recorriendocostarica/video/7327708965993860357?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_blank&referer_video_id=7327708965993860357
+                        - link "#recorriendocostarica" [ref=f1e74] [cursor=pointer]:
+                          - /url: https://www.tiktok.com/tag/recorriendocostarica?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_hashtag&referer_video_id=7327708965993860357
+                          - generic [ref=f1e75] [cursor=pointer]: "#recorriendocostarica"
+                        - link [ref=f1e76] [cursor=pointer]:
+                          - /url: https://www.tiktok.com/@recorriendocostarica/video/7327708965993860357?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_blank&referer_video_id=7327708965993860357
+                        - link "#cartagocostarica" [ref=f1e77] [cursor=pointer]:
+                          - /url: https://www.tiktok.com/tag/cartagocostarica?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_hashtag&referer_video_id=7327708965993860357
+                          - generic [ref=f1e78] [cursor=pointer]: "#cartagocostarica"
+                      - link "El Mariachi Loco - Mariachi Nacional de México" [ref=f1e79] [cursor=pointer]:
+                        - /url: https://www.tiktok.com/music/El-Mariachi-Loco-7050470148533716993?referer_url=localhost%3A3000%2F&refer=embed&embed_source=null%3Bnull%3Bembed_song_name
+                        - generic [ref=f1e80] [cursor=pointer]: El Mariachi Loco - Mariachi Nacional de México
+        - generic [ref=e464]:
+          - generic [ref=e465]:
+            - heading "Nuestra Ubicación" [level=3] [ref=e466]:
+              - img [ref=e467]
+              - text: Nuestra Ubicación
+            - paragraph [ref=e469]: Visítanos en nuestra tienda física o contáctanos para entregas
+          - generic [ref=e470]:
+            - iframe [ref=e471]
+            - generic [ref=e472]:
+              - link "Ver en Google Maps" [ref=e473] [cursor=pointer]:
+                - /url: https://www.google.com/maps/place/Galer%C3%ADa+Mexicana/@9.8627974,-83.9144024,17z/data=!3m1!4b1!4m6!3m5!1s0x8fa0df55eb2010ab:0x8547b443a160da15!8m2!3d9.8627974!4d-83.9122137!16s%2Fg%2F11c5w2w2qg?entry=ttu
+                - img [ref=e474] [cursor=pointer]
+                - text: Ver en Google Maps
+              - link "Abrir en Waze" [ref=e476] [cursor=pointer]:
+                - /url: https://www.waze.com/es-419/live-map/directions?from=place.ChIJqxAg61XfoI8RFdpgoUO0R4U
+                - img [ref=e477] [cursor=pointer]
+                - text: Abrir en Waze
+          - generic [ref=e479]:
+            - generic [ref=e480]:
+              - img [ref=e481]
+              - generic [ref=e483]: (+506) 8739-6001
+            - generic [ref=e484]:
+              - img [ref=e485]
+              - link "WhatsApp" [ref=e487] [cursor=pointer]:
+                - /url: https://api.whatsapp.com/send/?phone=50687396001&text&type=phone_number&app_absent=0
+    - generic [ref=e489]:
+      - generic [ref=e491]:
+        - generic [ref=e492]:
+          - heading "Nuestro Blog" [level=2] [ref=e493]:
+            - img [ref=e494]
+            - text: Nuestro Blog
+          - paragraph [ref=e496]: Descubre historias, tradiciones y guías sobre los mejores productos mexicanos
+        - link "Ver todos los artículos" [ref=e498] [cursor=pointer]:
+          - /url: /blog
+          - text: Ver todos los artículos
+          - img [ref=e499] [cursor=pointer]
+      - generic [ref=e501]:
+        - article [ref=e502] [cursor=pointer]:
+          - link "Top 10 Tequilas Premium en Costa Rica Tequila 14 ene 2025 8 min Top 10 Tequilas Premium en Costa Rica Descubre los mejores tequilas premium que puedes encontrar en Costa Rica. Leer más" [ref=e503] [cursor=pointer]:
+            - /url: /blog/top-10-tequilas-premium-costa-rica
+            - generic [ref=e504] [cursor=pointer]:
+              - img "Top 10 Tequilas Premium en Costa Rica" [ref=e506] [cursor=pointer]
+              - generic [ref=e507] [cursor=pointer]: Tequila
+            - generic [ref=e508] [cursor=pointer]:
+              - generic [ref=e509] [cursor=pointer]:
+                - generic [ref=e510] [cursor=pointer]:
+                  - img [ref=e511] [cursor=pointer]
+                  - text: 14 ene 2025
+                - generic [ref=e513] [cursor=pointer]:
+                  - img [ref=e514] [cursor=pointer]
+                  - text: 8 min
+              - heading "Top 10 Tequilas Premium en Costa Rica" [level=3] [ref=e516] [cursor=pointer]
+              - paragraph [ref=e517] [cursor=pointer]: Descubre los mejores tequilas premium que puedes encontrar en Costa Rica.
+              - generic [ref=e518] [cursor=pointer]:
+                - generic [ref=e519] [cursor=pointer]: Leer más
+                - img [ref=e520] [cursor=pointer]
+        - article [ref=e522] [cursor=pointer]:
+          - link "Diferencias entre Tequila y Mezcal Educativo 19 dic 2023 5 min Diferencias entre Tequila y Mezcal Comprende las principales diferencias entre estas dos icónicas bebidas mexicanas. Leer más" [ref=e523] [cursor=pointer]:
+            - /url: /blog/diferencias-tequila-mezcal
+            - generic [ref=e524] [cursor=pointer]:
+              - img "Diferencias entre Tequila y Mezcal" [ref=e526] [cursor=pointer]
+              - generic [ref=e527] [cursor=pointer]: Educativo
+            - generic [ref=e528] [cursor=pointer]:
+              - generic [ref=e529] [cursor=pointer]:
+                - generic [ref=e530] [cursor=pointer]:
+                  - img [ref=e531] [cursor=pointer]
+                  - text: 19 dic 2023
+                - generic [ref=e533] [cursor=pointer]:
+                  - img [ref=e534] [cursor=pointer]
+                  - text: 5 min
+              - heading "Diferencias entre Tequila y Mezcal" [level=3] [ref=e536] [cursor=pointer]
+              - paragraph [ref=e537] [cursor=pointer]: Comprende las principales diferencias entre estas dos icónicas bebidas mexicanas.
+              - generic [ref=e538] [cursor=pointer]:
+                - generic [ref=e539] [cursor=pointer]: Leer más
+                - img [ref=e540] [cursor=pointer]
+        - article [ref=e542] [cursor=pointer]:
+          - link "Dulces Mexicanos Tradicionales Dulces 4 ene 2025 6 min Dulces Mexicanos Tradicionales Explora el mundo de los dulces mexicanos tradicionales y sus sabores únicos. Leer más" [ref=e543] [cursor=pointer]:
+            - /url: /blog/dulces-mexicanos-tradicionales
+            - generic [ref=e544] [cursor=pointer]:
+              - img "Dulces Mexicanos Tradicionales" [ref=e546] [cursor=pointer]
+              - generic [ref=e547] [cursor=pointer]: Dulces
+            - generic [ref=e548] [cursor=pointer]:
+              - generic [ref=e549] [cursor=pointer]:
+                - generic [ref=e550] [cursor=pointer]:
+                  - img [ref=e551] [cursor=pointer]
+                  - text: 4 ene 2025
+                - generic [ref=e553] [cursor=pointer]:
+                  - img [ref=e554] [cursor=pointer]
+                  - text: 6 min
+              - heading "Dulces Mexicanos Tradicionales" [level=3] [ref=e556] [cursor=pointer]
+              - paragraph [ref=e557] [cursor=pointer]: Explora el mundo de los dulces mexicanos tradicionales y sus sabores únicos.
+              - generic [ref=e558] [cursor=pointer]:
+                - generic [ref=e559] [cursor=pointer]: Leer más
+                - img [ref=e560] [cursor=pointer]
+      - generic [ref=e563]:
+        - heading "¿Quieres saber más sobre productos mexicanos?" [level=3] [ref=e564]
+        - paragraph [ref=e565]: Nuestro blog está lleno de información valiosa, guías de compra, historias fascinantes y consejos de expertos.
+        - link "Explorar Blog Completo" [ref=e567] [cursor=pointer]:
+          - /url: /blog
+          - text: Explorar Blog Completo
+          - img [ref=e568] [cursor=pointer]
+    - contentinfo [ref=e570]:
+      - generic [ref=e571]:
+        - generic [ref=e572]:
+          - generic [ref=e573]:
+            - heading "Galería Mexicana" [level=3] [ref=e574]
+            - paragraph [ref=e575]: Llevamos México a tus manos con productos auténticos y de la mejor calidad. Desde Costa Rica para toda Centroamérica.
+            - generic [ref=e576]:
+              - generic [ref=e577]:
+                - img [ref=e578]
+                - generic [ref=e580]: Cartago, Costa Rica
+              - generic [ref=e581]:
+                - img [ref=e582]
+                - generic [ref=e584]: +506 8739-6001
+              - generic [ref=e585]:
+                - img [ref=e586]
+                - generic [ref=e588]: espacioscreativos@hotmail.it
+            - generic [ref=e589]:
+              - link "Facebook" [ref=e590] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e591] [cursor=pointer]
+              - link "Instagram" [ref=e593] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e594] [cursor=pointer]
+              - link "WhatsApp" [ref=e596] [cursor=pointer]:
+                - /url: https://api.whatsapp.com/send/?phone=50687396001&text&type=phone_number&app_absent=0
+                - img [ref=e597] [cursor=pointer]
+          - generic [ref=e599]:
+            - heading "Enlaces Rápidos" [level=4] [ref=e600]
+            - list [ref=e601]:
+              - listitem [ref=e602]:
+                - link "Inicio" [ref=e603] [cursor=pointer]:
+                  - /url: "#"
+              - listitem [ref=e604]:
+                - link "Productos" [ref=e605] [cursor=pointer]:
+                  - /url: "#productos"
+              - listitem [ref=e606]:
+                - link "Servicios" [ref=e607] [cursor=pointer]:
+                  - /url: "#servicios"
+              - listitem [ref=e608]:
+                - link "Ubicación" [ref=e609] [cursor=pointer]:
+                  - /url: "#mapa"
+              - listitem [ref=e610]:
+                - link "Contáctanos" [ref=e611] [cursor=pointer]:
+                  - /url: "#contacto"
+          - generic [ref=e612]:
+            - heading "Envíos" [level=4] [ref=e613]
+            - list [ref=e614]:
+              - listitem [ref=e615]: 📦 Correos de Costa Rica
+              - listitem [ref=e616]: 🚚 Entregas personales
+              - listitem [ref=e617]: 💳 Pago con el 50%
+          - generic [ref=e618]:
+            - heading "Métodos de Pago" [level=4] [ref=e619]
+            - generic [ref=e620]:
+              - img [ref=e622]
+              - generic [ref=e625]: SINPE
+            - paragraph [ref=e626]: Aceptamos múltiples formas de pago para tu comodidad
+        - generic [ref=e628]:
+          - paragraph [ref=e629]: © 2025 Galería Mexicana. Todos los derechos reservados.
+          - generic [ref=e630]:
+            - link "Política de Privacidad" [ref=e631] [cursor=pointer]:
+              - /url: "#"
+            - link "Términos y Condiciones" [ref=e632] [cursor=pointer]:
+              - /url: "#"
+  - alert [ref=e633]
+```
