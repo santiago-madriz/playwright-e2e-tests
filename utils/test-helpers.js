@@ -1,14 +1,3 @@
-/**
- * Test Utilities and Helper Functions
- * 
- * Common utilities used across all test files for:
- * - Element interactions
- * - Wait conditions
- * - Data generation
- * - Assertions
- * - API interactions
- */
-
 import { expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 
@@ -17,17 +6,11 @@ export class TestHelpers {
     this.page = page;
   }
 
-  /**
-   * Wait for page to be fully loaded including network requests
-   */
   async waitForPageLoad() {
     await this.page.waitForLoadState('networkidle');
     await this.page.waitForLoadState('domcontentloaded');
   }
 
-  /**
-   * Wait for element to be visible and stable
-   */
   async waitForElement(selector, options = {}) {
     const element = this.page.locator(selector);
     await element.waitFor({ state: 'visible', ...options });
@@ -35,31 +18,21 @@ export class TestHelpers {
     return element;
   }
 
-  /**
-   * Safely click an element with retry logic
-   */
   async safeClick(selector, options = {}) {
     const element = await this.waitForElement(selector);
     await element.click({ force: true, ...options });
-    await this.page.waitForTimeout(100); // Small delay after click
+    await this.page.waitForTimeout(100);
   }
 
-  /**
-   * Safely fill input with validation
-   */
   async safeFill(selector, value, options = {}) {
     const element = await this.waitForElement(selector);
     await element.clear();
     await element.fill(value, options);
     
-    // Verify the value was set correctly
     const inputValue = await element.inputValue();
     expect(inputValue).toBe(value);
   }
 
-  /**
-   * Take screenshot with timestamp
-   */
   async takeScreenshot(name = '') {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     const filename = `${name}-${timestamp}.png`;
@@ -70,9 +43,6 @@ export class TestHelpers {
     return filename;
   }
 
-  /**
-   * Wait for API response with specific URL pattern
-   */
   async waitForAPIResponse(urlPattern, timeout = 10000) {
     return await this.page.waitForResponse(
       response => response.url().includes(urlPattern) && response.status() === 200,
@@ -80,9 +50,6 @@ export class TestHelpers {
     );
   }
 
-  /**
-   * Check if element exists without throwing
-   */
   async elementExists(selector) {
     try {
       await this.page.locator(selector).waitFor({ state: 'attached', timeout: 1000 });
@@ -92,65 +59,42 @@ export class TestHelpers {
     }
   }
 
-  /**
-   * Scroll element into view
-   */
   async scrollIntoView(selector) {
     const element = this.page.locator(selector);
     await element.scrollIntoViewIfNeeded();
     await this.page.waitForTimeout(200);
   }
 
-  /**
-   * Get element text content safely
-   */
   async getTextContent(selector) {
     const element = await this.waitForElement(selector);
     return await element.textContent();
   }
 
-  /**
-   * Hover over element
-   */
   async hover(selector) {
     const element = await this.waitForElement(selector);
     await element.hover();
     await this.page.waitForTimeout(200);
   }
 
-  /**
-   * Wait for element to disappear
-   */
   async waitForElementToDisappear(selector, timeout = 5000) {
     await this.page.locator(selector).waitFor({ state: 'detached', timeout });
   }
 
-  /**
-   * Check page accessibility
-   */
   async checkAccessibility() {
-    // Basic accessibility checks
     await expect(this.page.locator('h1')).toBeVisible();
     await expect(this.page.locator('[alt]')).toHaveAttribute('alt');
   }
 
-  /**
-   * Simulate mobile device interaction
-   */
   async simulateMobileTouch(selector) {
     const element = await this.waitForElement(selector);
     await element.tap();
   }
 
-  /**
-   * Check responsive behavior
-   */
   async checkResponsive() {
-    // Test different viewport sizes
     const viewports = [
-      { width: 375, height: 667 },  // iPhone
-      { width: 768, height: 1024 }, // iPad
-      { width: 1920, height: 1080 } // Desktop
+      { width: 375, height: 667 },
+      { width: 768, height: 1024 },
+      { width: 1920, height: 1080 }
     ];
 
     for (const viewport of viewports) {
@@ -161,9 +105,6 @@ export class TestHelpers {
   }
 }
 
-/**
- * Data generators for testing
- */
 export class TestDataGenerator {
   static generateCustomer() {
     return {
@@ -212,9 +153,6 @@ export class TestDataGenerator {
   }
 }
 
-/**
- * Page Object Model base class
- */
 export class BasePage {
   constructor(page) {
     this.page = page;
@@ -235,29 +173,22 @@ export class BasePage {
   }
 
   async checkSEO() {
-    // Check meta tags
     await expect(this.page.locator('meta[name="description"]')).toHaveAttribute('content');
     await expect(this.page.locator('title')).not.toBeEmpty();
     
-    // Check structured data
     const jsonLd = await this.page.locator('script[type="application/ld+json"]').count();
     expect(jsonLd).toBeGreaterThan(0);
   }
 
   async checkPerformance() {
-    // Basic performance checks
     const navigationStart = await this.page.evaluate(() => performance.timing.navigationStart);
     const loadComplete = await this.page.evaluate(() => performance.timing.loadEventEnd);
     const loadTime = loadComplete - navigationStart;
     
-    // Load time should be under 5 seconds
     expect(loadTime).toBeLessThan(5000);
   }
 }
 
-/**
- * Assertion helpers
- */
 export class CustomAssertions {
   static async toBeLoaded(page) {
     await expect(page).toHaveURL(/.*/, { timeout: 10000 });
@@ -276,13 +207,11 @@ export class CustomAssertions {
   }
 
   static async toBeAccessible(page) {
-    // Check for basic accessibility requirements
     const images = await page.locator('img').all();
     for (const img of images) {
       await expect(img).toHaveAttribute('alt');
     }
     
-    // Check for proper heading structure
     await expect(page.locator('h1')).toBeVisible();
   }
 }

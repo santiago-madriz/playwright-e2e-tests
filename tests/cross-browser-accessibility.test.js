@@ -1,10 +1,3 @@
-/**
- * Cross-Browser and Accessibility Tests
- * 
- * Tests that ensure the application works consistently across different browsers
- * and meets accessibility standards
- */
-
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage.js';
 import { TequilaPage } from '../pages/TequilaPage.js';
@@ -26,7 +19,6 @@ test.describe('Cross-Browser Compatibility Tests', () => {
       });
 
       await test.step('Test Chrome-specific features', async () => {
-        // Test local storage
         await homePage.page.evaluate(() => {
           localStorage.setItem('test', 'chrome-test');
         });
@@ -53,11 +45,9 @@ test.describe('Cross-Browser Compatibility Tests', () => {
       });
 
       await test.step('Test Firefox-specific behavior', async () => {
-        // Test that animations work properly in Firefox
         await homePage.addFirstProductToCart();
         await homePage.openCart();
         
-        // Verify cart modal animation
         await expect(homePage.page.locator(homePage.cartModal)).toBeVisible();
         await homePage.closeCart();
       });
@@ -81,7 +71,6 @@ test.describe('Cross-Browser Compatibility Tests', () => {
       });
 
       await test.step('Test Safari-specific behavior', async () => {
-        // Test touch events simulation for Safari
         await homePage.page.locator(homePage.productCards).first().tap();
         await homePage.page.waitForTimeout(200);
       });
@@ -139,7 +128,6 @@ test.describe('Cross-Browser Compatibility Tests', () => {
         
         await expect(homePage.page.locator(homePage.cartModal)).toBeVisible();
         
-        // Animation should complete within reasonable time
         expect(openDuration).toBeLessThan(2000);
         
         await homePage.closeCart();
@@ -150,7 +138,6 @@ test.describe('Cross-Browser Compatibility Tests', () => {
         await firstProduct.hover();
         await homePage.page.waitForTimeout(200);
         
-        // Product should still be visible after hover
         await expect(firstProduct).toBeVisible();
       });
     });
@@ -184,17 +171,13 @@ test.describe('Cross-Browser Compatibility Tests', () => {
       await test.step('Test ES6+ features', async () => {
         const supportsES6 = await homePage.page.evaluate(() => {
           try {
-            // Test arrow functions
             const arrow = () => true;
             
-            // Test template literals
             const template = `test ${arrow()}`;
             
-            // Test const/let
             const testConst = 'test';
             let testLet = 'test';
             
-            // Test destructuring
             const { length } = 'test';
             
             return template.includes('true') && length === 4;
@@ -267,10 +250,8 @@ test.describe('Accessibility Tests', () => {
       await homePage.navigateToHome();
       
       await test.step('Test tab navigation', async () => {
-        // Focus should start at the beginning of the page
         await homePage.page.keyboard.press('Tab');
         
-        // First focusable element should be focused
         const focused = await homePage.page.evaluate(() => document.activeElement.tagName);
         expect(['A', 'BUTTON', 'INPUT']).toContain(focused);
       });
@@ -298,7 +279,6 @@ test.describe('Accessibility Tests', () => {
           await firstAddButton.focus();
           await homePage.page.keyboard.press('Enter');
           
-          // Should add product to cart
           await homePage.page.waitForTimeout(500);
           const cartCount = await homePage.getCartItemCount();
           expect(cartCount).toBeGreaterThan(0);
@@ -321,7 +301,6 @@ test.describe('Accessibility Tests', () => {
       await test.step('Navigate within cart modal', async () => {
         await homePage.page.keyboard.press('Tab');
         
-        // Should focus first interactive element in modal
         const focused = await homePage.page.evaluate(() => {
           const activeElement = document.activeElement;
           const cartModal = document.querySelector('.cart-modal, [data-testid="cart-modal"]');
@@ -349,7 +328,6 @@ test.describe('Accessibility Tests', () => {
           await firstTab.focus();
           await expect(firstTab).toBeFocused();
           
-          // Test arrow key navigation if supported
           await homePage.page.keyboard.press('ArrowRight');
           await homePage.page.waitForTimeout(100);
         }
@@ -414,7 +392,6 @@ test.describe('Accessibility Tests', () => {
         const searchInput = homePage.page.locator(homePage.searchInput);
         
         if (await searchInput.isVisible()) {
-          // Should have label, placeholder, or aria-label
           const hasLabel = await searchInput.evaluate((input) => {
             const id = input.id;
             const label = document.querySelector(`label[for="${id}"]`);
@@ -436,7 +413,6 @@ test.describe('Accessibility Tests', () => {
       await test.step('Check cart button accessibility', async () => {
         const cartButton = homePage.page.locator(homePage.cartButton);
         
-        // Should have accessible name or label
         const hasAccessibleName = await cartButton.evaluate((button) => {
           const ariaLabel = button.getAttribute('aria-label');
           const textContent = button.textContent?.trim();
@@ -453,7 +429,6 @@ test.describe('Accessibility Tests', () => {
         
         const cartModal = homePage.page.locator(homePage.cartModal);
         
-        // Modal should have proper ARIA attributes
         const hasAriaAttributes = await cartModal.evaluate((modal) => {
           const role = modal.getAttribute('role');
           const ariaModal = modal.getAttribute('aria-modal');
@@ -490,7 +465,6 @@ test.describe('Accessibility Tests', () => {
               };
             });
             
-            // Basic check that colors are defined
             expect(styles.color).toBeTruthy();
             expect(styles.fontSize).toBeTruthy();
           }
@@ -502,7 +476,6 @@ test.describe('Accessibility Tests', () => {
       await homePage.navigateToHome();
       
       await test.step('Check that information is not conveyed by color alone', async () => {
-        // Check if discount badges have text or icons, not just color
         const discountBadges = homePage.page.locator('.discount-badge, .sale-badge, .discount');
         const badgeCount = await discountBadges.count();
         
@@ -538,12 +511,10 @@ test.describe('Accessibility Tests', () => {
       await test.step('Test focus trap in cart modal', async () => {
         await homePage.openCart();
         
-        // Focus should be trapped within the modal
         const initialFocused = await homePage.page.evaluate(() => {
           return document.activeElement?.tagName;
         });
         
-        // Tab through modal elements
         for (let i = 0; i < 10; i++) {
           await homePage.page.keyboard.press('Tab');
           
@@ -553,7 +524,6 @@ test.describe('Accessibility Tests', () => {
             return cartModal && cartModal.contains(activeElement);
           });
           
-          // Focus should remain within modal
           expect(currentFocused).toBe(true);
         }
         
@@ -574,15 +544,12 @@ test.describe('Accessibility Tests', () => {
         });
         expect(buttonFocused).toBe(true);
         
-        // Open modal
         await homePage.page.keyboard.press('Enter');
         await expect(homePage.page.locator(homePage.cartModal)).toBeVisible();
         
-        // Close modal
         await homePage.page.keyboard.press('Escape');
         await expect(homePage.page.locator(homePage.cartModal)).not.toBeVisible();
         
-        // Focus should return to cart button
         const focusRestored = await cartButton.evaluate((el) => {
           return document.activeElement === el;
         });
@@ -606,7 +573,6 @@ test.describe('Accessibility Tests', () => {
           if (await target.isVisible()) {
             const box = await target.boundingBox();
             
-            // Touch targets should be at least 44x44 pixels (iOS guidelines)
             expect(box.width).toBeGreaterThanOrEqual(44);
             expect(box.height).toBeGreaterThanOrEqual(44);
           }
@@ -614,7 +580,6 @@ test.describe('Accessibility Tests', () => {
       });
 
       await test.step('Check mobile navigation', async () => {
-        // Mobile menu should be accessible
         const mobileMenu = homePage.page.locator('.mobile-menu, .hamburger, .nav-toggle');
         
         if (await mobileMenu.count() > 0) {
