@@ -289,7 +289,7 @@ test.describe('Homepage Tests', () => {
       await test.step('Verify back on homepage', async () => {
         await homePage.helpers.waitForPageLoad();
         const url = homePage.page.url();
-        expect(url).toBe('http://localhost:3000/' || url.endsWith('/'));
+        expect(url).toBe('https://galeriamexicanacr.com/' || url.endsWith('/'));
       });
     });
   });

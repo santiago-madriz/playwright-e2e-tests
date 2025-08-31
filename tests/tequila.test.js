@@ -423,7 +423,7 @@ test.describe('Tequila Page Tests', () => {
       await test.step('Verify on homepage', async () => {
         await homePage.helpers.waitForPageLoad();
         const url = tequilaPage.page.url();
-        expect(url).toBe('http://localhost:3000/' || url.endsWith('/'));
+        expect(url).toBe('https://galeriamexicanacr.com/' || url.endsWith('/'));
       });
     });
 

@@ -502,7 +502,7 @@ test.describe('SEO Tests', () => {
       await test.step('Check homepage URL', async () => {
         await homePage.navigateToHome();
         const url = homePage.page.url();
-        expect(url).toBe('http://localhost:3000/');
+        expect(url).toBe('https://galeriamexicanacr.com/');
       });
 
       await test.step('Check tequila page URL', async () => {
