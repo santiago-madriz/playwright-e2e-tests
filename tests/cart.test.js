@@ -1,10 +1,3 @@
-/**
- * Shopping Cart End-to-End Tests
- * 
- * Comprehensive test suite for cart functionality across the application
- * Tests include: adding/removing items, quantity management, checkout flow
- */
-
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage.js';
 import { TequilaPage } from '../pages/TequilaPage.js';
@@ -117,7 +110,7 @@ test.describe('Shopping Cart Tests', () => {
           await quantityInput.fill('2');
           await homePage.page.waitForTimeout(500);
           
-          // Verify quantity updated
+          
           const updatedValue = await quantityInput.inputValue();
           expect(updatedValue).toBe('2');
         }
@@ -157,7 +150,7 @@ test.describe('Shopping Cart Tests', () => {
           await quantityInput.fill('0');
           await homePage.page.waitForTimeout(500);
           
-          // Item should be removed or quantity should be reset to 1
+          
           const cartCount = await homePage.getCartItemCount();
           expect(cartCount).toBeGreaterThanOrEqual(0);
         }
@@ -219,12 +212,12 @@ test.describe('Shopping Cart Tests', () => {
       });
 
       await test.step('Verify cart maintained after refresh', async () => {
-        // Note: This depends on localStorage implementation
-        // May need to wait for cart to restore from localStorage
+        
+        
         await homePage.page.waitForTimeout(1000);
         const countAfterRefresh = await homePage.getCartItemCount();
         
-        // Cart should either maintain state or be empty (depending on implementation)
+        
         expect(countAfterRefresh).toBeGreaterThanOrEqual(0);
       });
     });
@@ -259,7 +252,7 @@ test.describe('Shopping Cart Tests', () => {
         await homePage.addFirstProductToCart();
         await homePage.page.waitForTimeout(500);
         
-        // Store for later verification
+        
         homePage.expectedProductName = productName;
         homePage.expectedProductPrice = productPrice;
       });
@@ -270,7 +263,7 @@ test.describe('Shopping Cart Tests', () => {
         const cartItems = homePage.page.locator(homePage.cartItems);
         const firstCartItem = cartItems.first();
         
-        // Verify item has name and price
+        
         const itemNameElement = firstCartItem.locator('.item-name, .product-name, h3, h4');
         if (await itemNameElement.isVisible()) {
           const cartItemName = await itemNameElement.textContent();
@@ -302,7 +295,7 @@ test.describe('Shopping Cart Tests', () => {
         await homePage.openCart();
         await expect(homePage.page.locator(homePage.cartModal)).toBeVisible();
         
-        // Cart should be responsive and usable on mobile
+        
         const cartModal = homePage.page.locator(homePage.cartModal);
         const boundingBox = await cartModal.boundingBox();
         expect(boundingBox.width).toBeLessThanOrEqual(375);
@@ -336,7 +329,7 @@ test.describe('Shopping Cart Tests', () => {
           await whatsappPage.close();
         } catch (error) {
           console.log('WhatsApp may be blocked by popup blocker:', error.message);
-          // This is acceptable in testing environment
+          
         }
       });
     });
@@ -346,12 +339,12 @@ test.describe('Shopping Cart Tests', () => {
         await homePage.addFirstProductToCart();
         await homePage.page.waitForTimeout(300);
         
-        // Navigate to tequila page and add another product
+        
         await homePage.navigateToTequila();
         await tequilaPage.addFirstTequilaToCart();
         await tequilaPage.page.waitForTimeout(300);
         
-        // Return to homepage
+        
         await homePage.navigateToHome();
       });
 
@@ -365,7 +358,7 @@ test.describe('Shopping Cart Tests', () => {
           const url = whatsappPage.url();
           const decodedUrl = decodeURIComponent(url);
           
-          // Should contain product information and total
+          
           expect(decodedUrl.toLowerCase()).toContain('compra');
           expect(decodedUrl).toMatch(/₡[\d,]+/);
           
@@ -392,10 +385,10 @@ test.describe('Shopping Cart Tests', () => {
           const isEnabled = await checkoutButton.isEnabled();
           
           if (!isEnabled) {
-            // Button should be disabled for empty cart
+            
             expect(isEnabled).toBe(false);
           } else {
-            // If enabled, clicking should either do nothing or show a message
+            
             await checkoutButton.click();
             await homePage.page.waitForTimeout(500);
           }
@@ -411,16 +404,16 @@ test.describe('Shopping Cart Tests', () => {
       await test.step('Rapidly add items', async () => {
         for (let i = 0; i < 5; i++) {
           await homePage.addFirstProductToCart();
-          await homePage.page.waitForTimeout(50); // Very short delay
+          await homePage.page.waitForTimeout(50); 
         }
       });
 
       await test.step('Verify cart state is consistent', async () => {
-        await homePage.page.waitForTimeout(1000); // Wait for all updates
+        await homePage.page.waitForTimeout(1000); 
         const cartCount = await homePage.getCartItemCount();
         expect(cartCount).toBeGreaterThan(0);
         
-        // Cart should still be functional
+        
         await homePage.openCart();
         await expect(homePage.page.locator(homePage.cartModal)).toBeVisible();
         await homePage.closeCart();
@@ -431,7 +424,7 @@ test.describe('Shopping Cart Tests', () => {
       await test.step('Add item during navigation', async () => {
         await homePage.addFirstProductToCart();
         
-        // Immediately navigate away
+        
         await homePage.navigateToTequila();
         await tequilaPage.waitForPageLoad();
       });
@@ -440,7 +433,7 @@ test.describe('Shopping Cart Tests', () => {
         const cartCount = await tequilaPage.getCartItemCount();
         expect(cartCount).toBeGreaterThanOrEqual(0);
         
-        // Cart should still be functional
+        
         if (cartCount > 0) {
           await homePage.openCart();
           await expect(homePage.page.locator(homePage.cartModal)).toBeVisible();
@@ -460,21 +453,21 @@ test.describe('Shopping Cart Tests', () => {
         
         const quantityInput = homePage.page.locator(homePage.quantityInput).first();
         if (await quantityInput.isVisible()) {
-          // Test negative number
+          
           await quantityInput.clear();
           await quantityInput.fill('-1');
           await homePage.page.waitForTimeout(300);
           
-          // Should either prevent negative or reset to valid value
+          
           const negativeValue = await quantityInput.inputValue();
           expect(parseInt(negativeValue)).toBeGreaterThanOrEqual(0);
           
-          // Test very large number
+          
           await quantityInput.clear();
           await quantityInput.fill('9999');
           await homePage.page.waitForTimeout(300);
           
-          // Should either accept or limit to reasonable value
+          
           const largeValue = await quantityInput.inputValue();
           expect(parseInt(largeValue)).toBeGreaterThanOrEqual(0);
         }
@@ -506,7 +499,7 @@ test.describe('Shopping Cart Tests', () => {
         
         console.log(`Time to open cart with ${itemsToAdd} items: ${openTime}ms`);
         
-        // Cart should open within reasonable time
+        
         expect(openTime).toBeLessThan(2000);
         
         await expect(homePage.page.locator(homePage.cartModal)).toBeVisible();
@@ -525,11 +518,11 @@ test.describe('Shopping Cart Tests', () => {
       await test.step('Test cart UI responsiveness', async () => {
         await homePage.openCart();
         
-        // Cart should be scrollable if many items
+        
         const cartModal = homePage.page.locator(homePage.cartModal);
         await expect(cartModal).toBeVisible();
         
-        // Test scrolling if cart has overflow
+        
         const cartBody = homePage.page.locator('.cart-body, .cart-items-container');
         if (await cartBody.isVisible()) {
           await cartBody.hover();

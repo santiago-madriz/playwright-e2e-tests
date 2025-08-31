@@ -1,10 +1,3 @@
-/**
- * Homepage End-to-End Tests
- * 
- * Comprehensive test suite for the Galeria Mexicana homepage
- * Tests include: layout, functionality, SEO, accessibility, performance
- */
-
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage.js';
 import { TestDataGenerator } from '../utils/test-helpers.js';
@@ -68,7 +61,6 @@ test.describe('Homepage Tests', () => {
       const productCount = await homePage.getProductCount();
       expect(productCount).toBeGreaterThan(0);
 
-      // Check first 3 products for images
       for (let i = 0; i < Math.min(productCount, 3); i++) {
         const product = homePage.page.locator(homePage.productCards).nth(i);
         const image = product.locator(homePage.productImage);
@@ -114,11 +106,11 @@ test.describe('Homepage Tests', () => {
       });
 
       await test.step('Verify search results', async () => {
-        // Should still have products or show "no results" message
+        
         const productCount = await homePage.getProductCount();
-        // Either products found or page should show no results message
+        
         if (productCount === 0) {
-          // Check if there's a "no results" message
+          
           const noResultsMessage = homePage.page.locator('text=No se encontraron productos, text=Sin resultados, .no-results');
           const hasNoResultsMessage = await noResultsMessage.count() > 0;
           if (!hasNoResultsMessage) {
@@ -131,7 +123,7 @@ test.describe('Homepage Tests', () => {
     });
 
     test('should filter products by category', async () => {
-      // Test category filtering if available
+      
       const categoryFilter = homePage.page.locator(homePage.categoryFilter);
       
       if (await categoryFilter.isVisible()) {
@@ -162,10 +154,10 @@ test.describe('Homepage Tests', () => {
       });
 
       await test.step('Verify cart updated', async () => {
-        // Wait for cart animation/update
+        
         await homePage.page.waitForTimeout(1000);
         const newCount = await homePage.getCartItemCount();
-        // Cart should have at least 1 item
+        
         expect(newCount).toBeGreaterThan(0);
       });
     });
@@ -200,22 +192,22 @@ test.describe('Homepage Tests', () => {
       });
 
       await test.step('Proceed to checkout', async () => {
-        // Listen for new tabs/popups (WhatsApp)
+        
         const pagePromise = context.waitForEvent('page', { timeout: 5000 });
         
         try {
           await homePage.proceedToCheckout();
           const newPage = await pagePromise;
           
-          // Verify WhatsApp URL
+          
           const url = newPage.url();
           expect(url).toContain('api.whatsapp.com');
-          expect(url).toContain('50687396001'); // WhatsApp number
+          expect(url).toContain('50687396001'); 
           
           await newPage.close();
         } catch (error) {
           console.log('WhatsApp popup may be blocked or not triggered:', error.message);
-          // This is acceptable as popup blockers might prevent WhatsApp from opening
+          
         }
       });
     });
@@ -225,7 +217,7 @@ test.describe('Homepage Tests', () => {
         await homePage.addFirstProductToCart();
         await homePage.page.waitForTimeout(300);
         
-        // Try to add another product if available
+        
         const productCount = await homePage.getProductCount();
         if (productCount > 1) {
           const secondProduct = homePage.page.locator(homePage.productCards).nth(1);
@@ -241,8 +233,8 @@ test.describe('Homepage Tests', () => {
       });
 
       await test.step('Verify item removed', async () => {
-        // Cart should still exist but with fewer items
-        // This test assumes cart doesn't become empty
+        
+        
         const cartCount = await homePage.getCartItemCount();
         expect(cartCount).toBeGreaterThanOrEqual(0);
       });
@@ -313,7 +305,7 @@ test.describe('Homepage Tests', () => {
         await newPage.close();
       } catch (error) {
         console.log('WhatsApp popup may be blocked:', error.message);
-        // This is acceptable behavior
+        
       }
     });
   });
@@ -342,7 +334,7 @@ test.describe('Homepage Tests', () => {
       const count = await jsonLdScripts.count();
       expect(count).toBeGreaterThan(0);
       
-      // Verify the JSON-LD is valid
+      
       const jsonLdContent = await jsonLdScripts.first().textContent();
       expect(() => JSON.parse(jsonLdContent)).not.toThrow();
     });
@@ -352,11 +344,11 @@ test.describe('Homepage Tests', () => {
     });
 
     test('should have proper heading structure', async () => {
-      // Should have one H1
+      
       const h1Count = await homePage.page.locator('h1').count();
       expect(h1Count).toBe(1);
       
-      // Should have H2s for sections
+      
       const h2Count = await homePage.page.locator('h2').count();
       expect(h2Count).toBeGreaterThan(0);
     });
@@ -368,7 +360,7 @@ test.describe('Homepage Tests', () => {
       await homePage.navigateToHome();
       const loadTime = Date.now() - startTime;
       
-      // Should load within 5 seconds
+      
       expect(loadTime).toBeLessThan(5000);
     });
 
@@ -380,10 +372,10 @@ test.describe('Homepage Tests', () => {
         const img = images.nth(i);
         await expect(img).toHaveAttribute('src');
         
-        // Check if images have alt text
+        
         await expect(img).toHaveAttribute('alt');
         
-        // Check if lazy loading is implemented
+        
         const loading = await img.getAttribute('loading');
         if (loading) {
           expect(['lazy', 'eager']).toContain(loading);
@@ -399,7 +391,7 @@ test.describe('Homepage Tests', () => {
       });
 
       await test.step('Verify page doesn\'t break', async () => {
-        // Page should still be functional
+        
         await expect(homePage.page.locator(homePage.header)).toBeVisible();
         await expect(homePage.page.locator(homePage.searchInput)).toBeVisible();
       });

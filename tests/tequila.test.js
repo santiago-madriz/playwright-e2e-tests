@@ -1,10 +1,3 @@
-/**
- * Tequila Page End-to-End Tests
- * 
- * Comprehensive test suite for the dedicated tequila products page
- * Tests include: filtering, product display, cart integration, responsive design
- */
-
 import { test, expect } from '@playwright/test';
 import { TequilaPage } from '../pages/TequilaPage.js';
 import { HomePage } from '../pages/HomePage.js';
@@ -36,7 +29,6 @@ test.describe('Tequila Page Tests', () => {
       const title = await tequilaPage.getTitle();
       expect(title.toLowerCase()).toContain('tequila');
       
-      // Check if page has proper heading
       await expect(tequilaPage.page.locator(tequilaPage.pageTitle)).toBeVisible();
       const headingText = await tequilaPage.page.locator(tequilaPage.pageTitle).textContent();
       expect(headingText.toLowerCase()).toContain('tequila');
@@ -79,7 +71,6 @@ test.describe('Tequila Page Tests', () => {
         const count = await tequilas.count();
         
         if (count > 0) {
-          // Check that products contain blanco information
           for (let i = 0; i < Math.min(count, 3); i++) {
             const tequila = tequilas.nth(i);
             const type = await tequilaPage.getTequilaType(tequila);
@@ -193,7 +184,6 @@ test.describe('Tequila Page Tests', () => {
         const hasDiscount = await tequilaPage.hasDiscount(tequila);
         
         if (hasDiscount) {
-          // If product has discount, should also have original price
           const originalPriceElement = tequila.locator(tequilaPage.originalPrice);
           const hasOriginalPrice = await originalPriceElement.isVisible();
           if (hasOriginalPrice) {
@@ -303,7 +293,6 @@ test.describe('Tequila Page Tests', () => {
             const firstPrice = await tequilaPage.getTequilaPrice(tequilas.first());
             const secondPrice = await tequilaPage.getTequilaPrice(tequilas.nth(1));
             
-            // Extract numeric values for comparison
             const firstNum = parseInt(firstPrice.replace(/₡|,/g, ''));
             const secondNum = parseInt(secondPrice.replace(/₡|,/g, ''));
             
@@ -380,10 +369,8 @@ test.describe('Tequila Page Tests', () => {
           await page.setViewportSize({ width: viewport.width, height: viewport.height });
           await tequilaPage.waitForPageLoad();
           
-          // Verify essential elements are visible
           await expect(tequilaPage.page.locator(tequilaPage.tequilaGrid)).toBeVisible();
           
-          // On smaller screens, filter container might be collapsed
           if (viewport.width >= 768) {
             await expect(tequilaPage.page.locator(tequilaPage.filterContainer)).toBeVisible();
           }
@@ -449,13 +436,10 @@ test.describe('Tequila Page Tests', () => {
 
   test.describe('Error Handling', () => {
     test('should handle empty filter results gracefully', async () => {
-      // Try to filter by a category that might not have results
       await tequilaPage.filterByExtraAnejo();
       
       const count = await tequilaPage.getTequilaCount();
       if (count === 0) {
-        // Should show some kind of "no results" message or empty state
-        // Page should not break
         await expect(tequilaPage.page.locator(tequilaPage.filterContainer)).toBeVisible();
       }
     });
@@ -468,7 +452,6 @@ test.describe('Tequila Page Tests', () => {
         await tequilaPage.page.waitForTimeout(100);
       }
       
-      // Page should still be functional
       await expect(tequilaPage.page.locator(tequilaPage.tequilaGrid)).toBeVisible();
       await expect(tequilaPage.page.locator(tequilaPage.filterContainer)).toBeVisible();
     });

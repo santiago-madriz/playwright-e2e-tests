@@ -1,10 +1,3 @@
-/**
- * Performance and SEO Tests
- * 
- * Tests to ensure the application meets performance standards
- * and has proper SEO implementation
- */
-
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage.js';
 import { TequilaPage } from '../pages/TequilaPage.js';
@@ -28,12 +21,12 @@ test.describe('Performance Tests', () => {
       console.log(`Homepage load time: ${loadTime}ms`);
       
       await test.step('Verify load time is acceptable', async () => {
-        // Homepage should load within 3 seconds
+        
         expect(loadTime).toBeLessThan(3000);
       });
 
       await test.step('Verify page is fully interactive', async () => {
-        // Test that interactive elements work immediately
+        
         await homePage.addFirstProductToCart();
         const cartCount = await homePage.getCartItemCount();
         expect(cartCount).toBeGreaterThan(0);
@@ -54,14 +47,14 @@ test.describe('Performance Tests', () => {
               }
             }).observe({ entryTypes: ['paint'] });
             
-            // Fallback timeout
+            
             setTimeout(() => resolve(null), 5000);
           });
         });
         
         if (fcpTime) {
           console.log(`First Contentful Paint: ${fcpTime}ms`);
-          expect(fcpTime).toBeLessThan(2000); // FCP should be under 2 seconds
+          expect(fcpTime).toBeLessThan(2000); 
         }
       });
     });
@@ -78,7 +71,7 @@ test.describe('Performance Tests', () => {
               resolve(lastEntry?.startTime || null);
             }).observe({ entryTypes: ['largest-contentful-paint'] });
             
-            // Wait for LCP to stabilize
+            
             setTimeout(() => {
               const observer = new PerformanceObserver((list) => {
                 const entries = list.getEntries();
@@ -92,7 +85,7 @@ test.describe('Performance Tests', () => {
         
         if (lcpTime) {
           console.log(`Largest Contentful Paint: ${lcpTime}ms`);
-          expect(lcpTime).toBeLessThan(2500); // LCP should be under 2.5 seconds
+          expect(lcpTime).toBeLessThan(2500); 
         }
       });
     });
@@ -130,7 +123,7 @@ test.describe('Performance Tests', () => {
         
         console.log(`Images loaded: ${loadedImages}, failed: ${failedImages}, total: ${imageCount}`);
         
-        // At least 80% of images should load successfully
+        
         const successRate = loadedImages / imageCount;
         expect(successRate).toBeGreaterThan(0.8);
       });
@@ -150,7 +143,7 @@ test.describe('Performance Tests', () => {
           const src = await img.getAttribute('src');
           
           if (src) {
-            // Check for modern image formats
+            
             const isOptimized = /\.(webp|avif)(\?|$)/i.test(src) || 
                               src.includes('format=webp') || 
                               src.includes('format=avif');
@@ -163,8 +156,8 @@ test.describe('Performance Tests', () => {
         
         console.log(`Optimized images: ${optimizedImages} out of ${Math.min(imageCount, 10)}`);
         
-        // Expect at least some images to use modern formats
-        // This might be 0 if using fallback images for testing
+        
+        
         expect(optimizedImages).toBeGreaterThanOrEqual(0);
       });
     });
@@ -187,7 +180,7 @@ test.describe('Performance Tests', () => {
         
         console.log('Resource loading stats:', resourceTimings);
         
-        // CSS and JS files should load reasonably quickly
+        
         expect(resourceTimings.avgCssLoad).toBeLessThan(1000);
         expect(resourceTimings.avgJsLoad).toBeLessThan(2000);
       });
@@ -201,7 +194,7 @@ test.describe('Performance Tests', () => {
       await test.step('Test cart interactions performance', async () => {
         const startTime = Date.now();
         
-        // Add multiple items quickly
+        
         for (let i = 0; i < 3; i++) {
           await homePage.addFirstProductToCart();
           await homePage.page.waitForTimeout(50);
@@ -231,14 +224,14 @@ test.describe('Performance Tests', () => {
       await test.step('Test smooth scrolling', async () => {
         const scrollStartTime = Date.now();
         
-        // Scroll to bottom of page
+        
         await homePage.page.evaluate(() => {
           window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         });
         
         await homePage.page.waitForTimeout(1000);
         
-        // Scroll back to top
+        
         await homePage.page.evaluate(() => {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
@@ -246,7 +239,7 @@ test.describe('Performance Tests', () => {
         const scrollTime = Date.now() - scrollStartTime;
         console.log(`Scroll test time: ${scrollTime}ms`);
         
-        // Scrolling should not take too long
+        
         expect(scrollTime).toBeLessThan(3000);
       });
     });
@@ -266,7 +259,7 @@ test.describe('Performance Tests', () => {
         if (initialMemory) {
           console.log('Initial memory usage:', initialMemory);
           
-          // Perform several operations
+          
           await homePage.addFirstProductToCart();
           await homePage.openCart();
           await homePage.closeCart();
@@ -284,9 +277,9 @@ test.describe('Performance Tests', () => {
           if (finalMemory) {
             console.log('Final memory usage:', finalMemory);
             
-            // Memory shouldn't grow excessively
+            
             const memoryGrowth = finalMemory.usedJSHeapSize - initialMemory.usedJSHeapSize;
-            expect(memoryGrowth).toBeLessThan(50 * 1024 * 1024); // Less than 50MB growth
+            expect(memoryGrowth).toBeLessThan(50 * 1024 * 1024); 
           }
         }
       });
@@ -307,10 +300,10 @@ test.describe('Performance Tests', () => {
         
         console.log(`Total HTTP requests: ${requests.length}`);
         
-        // Should not make excessive requests
+        
         expect(requests.length).toBeLessThan(50);
         
-        // Check for duplicate requests
+        
         const uniqueRequests = new Set(requests);
         const duplicates = requests.length - uniqueRequests.size;
         expect(duplicates).toBe(0);
@@ -332,7 +325,7 @@ test.describe('Performance Tests', () => {
         await homePage.navigateToHome();
         await homePage.page.waitForLoadState('networkidle');
         
-        // Check static assets have proper cache headers
+        
         const staticAssets = responses.filter(r => 
           /\.(css|js|png|jpg|jpeg|webp|woff|woff2)$/.test(r.url)
         );
@@ -348,7 +341,7 @@ test.describe('Performance Tests', () => {
         console.log(`Cached static assets: ${cachedAssets} out of ${staticAssets.length}`);
         
         if (staticAssets.length > 0) {
-          // At least some static assets should have cache headers
+          
           expect(cachedAssets / staticAssets.length).toBeGreaterThan(0.5);
         }
       });
@@ -425,7 +418,7 @@ test.describe('SEO Tests', () => {
         expect(ogImage).toBeTruthy();
         expect(ogUrl).toBeTruthy();
         
-        // OG image should be a valid URL
+        
         expect(ogImage).toMatch(/^https?:\/\//);
       });
 
@@ -487,7 +480,7 @@ test.describe('SEO Tests', () => {
           const jsonLdContent = await jsonLdScripts.first().textContent();
           const structuredData = JSON.parse(jsonLdContent);
           
-          // Check if it contains product information
+          
           if (structuredData.hasOfferCatalog) {
             expect(structuredData.hasOfferCatalog.itemListElement).toBeTruthy();
             expect(Array.isArray(structuredData.hasOfferCatalog.itemListElement)).toBe(true);
@@ -592,10 +585,10 @@ test.describe('SEO Tests', () => {
           }
         }
         
-        // All images should have alt text
+        
         expect(imagesWithAlt).toBe(imageCount);
         
-        // Most alt text should be descriptive
+        
         if (imageCount > 0) {
           expect(descriptiveAlt / imageCount).toBeGreaterThan(0.8);
         }
@@ -611,7 +604,7 @@ test.describe('SEO Tests', () => {
         
         expect(linkCount).toBeGreaterThan(3);
         
-        // Check that links have descriptive text
+        
         for (let i = 0; i < Math.min(linkCount, 10); i++) {
           const link = links.nth(i);
           const text = await link.textContent();
@@ -643,11 +636,11 @@ test.describe('SEO Tests', () => {
         await page.setViewportSize({ width: 375, height: 667 });
         await homePage.navigateToHome();
         
-        // Check that content is visible and accessible on mobile
+        
         await expect(homePage.page.locator('h1')).toBeVisible();
         await expect(homePage.page.locator(homePage.productGrid)).toBeVisible();
         
-        // Check that text is not truncated
+        
         const h1 = homePage.page.locator('h1');
         const box = await h1.boundingBox();
         expect(box.width).toBeLessThanOrEqual(375);
