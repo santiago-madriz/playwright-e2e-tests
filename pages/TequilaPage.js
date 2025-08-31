@@ -1,10 +1,3 @@
-/**
- * Tequila Page Object Model
- * 
- * Represents the dedicated tequila products page
- * Contains selectors and actions specific to the tequila page
- */
-
 import { expect } from '@playwright/test';
 import { BasePage } from '../utils/test-helpers.js';
 
@@ -12,11 +5,8 @@ export class TequilaPage extends BasePage {
   constructor(page) {
     super(page);
     
-    // Page title and header
     this.pageTitle = 'h1, .page-title';
     this.pageDescription = '.page-description, .tequila-intro';
-    
-    // Filter selectors
     this.filterContainer = '.filter-container, .tequila-filters';
     this.categoryTabs = '.category-tab, .filter-tab';
     this.allCategoryTab = '[data-category="todos"], .category-tab[data-filter="all"]';
@@ -24,12 +14,8 @@ export class TequilaPage extends BasePage {
     this.reposadoTab = '[data-category="reposado"], .category-tab[data-filter="reposado"]';
     this.anejoTab = '[data-category="anejo"], .category-tab[data-filter="anejo"]';
     this.extraAnejoTab = '[data-category="extra-anejo"], .category-tab[data-filter="extra-anejo"]';
-    
-    // Product grid specific to tequila
     this.tequilaGrid = '.tequila-grid, .products-grid, .tequila-products';
     this.tequilaCards = '.tequila-card, .product-card, .tequila-item';
-    
-    // Tequila card elements
     this.tequilaName = '.tequila-name, .product-name, h3';
     this.tequilaBrand = '.tequila-brand, .brand-name';
     this.tequilaType = '.tequila-type, .product-type';
@@ -42,41 +28,29 @@ export class TequilaPage extends BasePage {
     this.ageInfo = '.age-info, .aging-info';
     this.stockStatus = '.stock-status, .availability';
     this.addToCartBtn = '.add-to-cart-btn, .add-to-cart, [data-testid="add-to-cart"]';
-    
-    // Product details modal/overlay
     this.productModal = '.product-modal, .tequila-modal, .product-overlay';
     this.modalClose = '.modal-close, .close-modal, [data-testid="close-modal"]';
     this.modalImage = '.modal-image img';
     this.modalDetails = '.modal-details, .product-details';
     this.quickViewBtn = '.quick-view, .view-details, [data-testid="quick-view"]';
-    
-    // Sort and filter controls
     this.sortSelect = '.sort-select, select[name="sort"]';
     this.priceFilter = '.price-filter, .price-range';
     this.brandFilter = '.brand-filter, select[name="brand"]';
     this.searchBox = '.search-box, input[type="search"]';
-    
-    // Special indicators
     this.discountBadge = '.discount-badge, .sale-badge, .discount-tag';
     this.newBadge = '.new-badge, .new-product, .nuevo';
     this.premiumBadge = '.premium-badge, .premium-tag';
-    
-    // Load more / pagination
     this.loadMoreBtn = '.load-more, .show-more, [data-testid="load-more"]';
     this.pagination = '.pagination, .page-numbers';
-    
-    // Featured section
     this.featuredSection = '.featured-tequilas, .destacados';
     this.featuredProducts = '.featured-product, .producto-destacado';
   }
 
-  // Navigation
   async navigateToTequilaPage() {
     await this.navigate('/tequila');
     await this.waitForPageLoad();
   }
 
-  // Filter actions
   async selectCategory(category) {
     const categoryTab = this.page.locator(`[data-category="${category}"], .category-tab[data-filter="${category}"]`);
     await this.helpers.safeClick(categoryTab);
@@ -129,7 +103,6 @@ export class TequilaPage extends BasePage {
     }
   }
 
-  // Product interactions
   async getTequilaCount() {
     const tequilas = this.page.locator(this.tequilaCards);
     return await tequilas.count();
@@ -171,7 +144,6 @@ export class TequilaPage extends BasePage {
     await this.helpers.waitForElementToDisappear(this.productModal);
   }
 
-  // Product information getters
   async getTequilaInfo(tequilaElement) {
     const name = await tequilaElement.locator(this.tequilaName).textContent();
     const brand = await tequilaElement.locator(this.tequilaBrand).textContent();
@@ -202,7 +174,7 @@ export class TequilaPage extends BasePage {
       const status = await stockElement.textContent();
       return !status.toLowerCase().includes('agotado');
     }
-    return true; // Assume in stock if no status shown
+    return true;
   }
 
   async hasDiscount(tequilaElement) {
@@ -220,7 +192,6 @@ export class TequilaPage extends BasePage {
     return await premiumBadge.isVisible();
   }
 
-  // Load more / pagination
   async loadMoreProducts() {
     const loadMoreBtn = this.page.locator(this.loadMoreBtn);
     if (await loadMoreBtn.isVisible()) {
@@ -229,7 +200,6 @@ export class TequilaPage extends BasePage {
     }
   }
 
-  // Validation methods
   async verifyTequilaPageLoaded() {
     await expect(this.page.locator(this.pageTitle)).toBeVisible();
     await expect(this.page.locator(this.tequilaGrid)).toBeVisible();
@@ -240,7 +210,6 @@ export class TequilaPage extends BasePage {
     const tequilaCount = await this.getTequilaCount();
     expect(tequilaCount).toBeGreaterThan(0);
     
-    // Verify first tequila has required elements
     const firstTequila = await this.getFirstTequila();
     await expect(firstTequila.locator(this.tequilaName)).toBeVisible();
     await expect(firstTequila.locator(this.tequilaPrice)).toBeVisible();
@@ -257,11 +226,9 @@ export class TequilaPage extends BasePage {
   async verifyFilterFunctionality(category) {
     await this.selectCategory(category);
     
-    // Verify URL or active state
     const activeTab = this.page.locator(`[data-category="${category}"].active, .category-tab[data-filter="${category}"].active`);
     await expect(activeTab).toBeVisible();
     
-    // Verify products are filtered
     const tequilaCount = await this.getTequilaCount();
     expect(tequilaCount).toBeGreaterThan(0);
   }
@@ -287,12 +254,10 @@ export class TequilaPage extends BasePage {
   }
 
   async verifyDonJulioProducts() {
-    // Search for Don Julio products specifically
     const donJulioProducts = this.page.locator(this.tequilaCards).filter({ hasText: 'Don Julio' });
     const count = await donJulioProducts.count();
     expect(count).toBeGreaterThan(0);
     
-    // Verify at least one Don Julio product
     if (count > 0) {
       const firstDonJulio = donJulioProducts.first();
       await expect(firstDonJulio.locator(this.tequilaName)).toContainText('Don Julio');
@@ -311,20 +276,17 @@ export class TequilaPage extends BasePage {
   }
 
   async verifyResponsiveDesign() {
-    // Test mobile view
     await this.page.setViewportSize({ width: 375, height: 667 });
     await this.helpers.waitForPageLoad();
     
     await expect(this.page.locator(this.tequilaGrid)).toBeVisible();
     await expect(this.page.locator(this.filterContainer)).toBeVisible();
     
-    // Test tablet view
     await this.page.setViewportSize({ width: 768, height: 1024 });
     await this.helpers.waitForPageLoad();
     
     await expect(this.page.locator(this.tequilaGrid)).toBeVisible();
     
-    // Reset to desktop
     await this.page.setViewportSize({ width: 1280, height: 720 });
     await this.helpers.waitForPageLoad();
   }
@@ -332,11 +294,9 @@ export class TequilaPage extends BasePage {
   async verifySEOElements() {
     await this.checkSEO();
     
-    // Check tequila-specific meta tags
     const title = await this.page.title();
     expect(title.toLowerCase()).toContain('tequila');
     
-    // Check structured data for products
     const jsonLdScripts = this.page.locator('script[type="application/ld+json"]');
     const count = await jsonLdScripts.count();
     expect(count).toBeGreaterThan(0);
@@ -346,7 +306,6 @@ export class TequilaPage extends BasePage {
     const initialCartCount = await this.getCartItemCount();
     await this.addFirstTequilaToCart();
     
-    // Wait for cart to update
     await this.page.waitForTimeout(1000);
     
     const newCartCount = await this.getCartItemCount();
@@ -362,7 +321,6 @@ export class TequilaPage extends BasePage {
     return 0;
   }
 
-  // Utility methods
   async waitForPageLoad() {
     await this.helpers.waitForPageLoad();
     await this.page.waitForLoadState('networkidle');
